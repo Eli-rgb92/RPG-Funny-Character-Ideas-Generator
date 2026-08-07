@@ -1,6 +1,6 @@
-/*node script.js to run*/
-console.log("Hello, enter your character's name as a string into generateCharacter(' '); and then run node script.js to run the RPG generator!");
-
+// ======================
+// DATA
+// ======================
 const races = [
   "overly dramatic Shadow Elf",
   "suspiciously shiny Dwarf",
@@ -53,27 +53,54 @@ const backstories = [
   "once tried to dual-wield baguettes in a serious duel"
 ];
 
-/*Functtions*/
-/*gets a random element from the input array.*/
+// ======================
+// HELPER FUNCTIONS
+// ======================
 const getRandomElement = (arr) => {
   const randomIndex = Math.floor(Math.random() * arr.length);
-  return arr[randomIndex]
+  return arr[randomIndex];
 };
 
-/*gets a random element for each array using getRandomElement*/
+// ======================
+// MAIN LOGIC
+// ======================
+function generateCharacter() {
+  const nameInput = document.getElementById('nameInput').value.trim();
 
-const generateCharacter = (name) => {
-  let randomRace = getRandomElement(races);
-  let randomClass = getRandomElement(classes);
-  let randomTrait = getRandomElement(traits);
-  let randomBackstory = getRandomElement(backstories);
+  const randomRace = getRandomElement(races);
+  const randomClass = getRandomElement(classes);
+  const randomTrait = getRandomElement(traits);
+  const randomBackstory = getRandomElement(backstories);
 
-  if (name === ' ') {
-    console.log(`${name} is a ${randomRace} ${randomClass}. Special trait: ${randomTrait} Backstory: ${randomBackstory}.`);
-  } else {console.log(`You are a ${randomRace} ${randomClass}. Special trait: ${randomTrait} Backstory: ${randomBackstory}.`);}
+  // DOM elements
+  const resultBox = document.getElementById('result');
+  const charNameEl = document.getElementById('charName');
+  const raceClassEl = document.getElementById('raceClass');
+  const traitEl = document.getElementById('trait');
+  const backstoryEl = document.getElementById('backstory');
 
-  
-};
+  // Update text
+  if (nameInput) {
+    charNameEl.textContent = `${nameInput} is a ${randomRace} ${randomClass}`;
+  } else {
+    charNameEl.textContent = `You are a ${randomRace} ${randomClass}`;
+  }
 
+  raceClassEl.textContent = `${randomRace} ${randomClass}`;
+  traitEl.textContent = randomTrait;
+  backstoryEl.textContent = randomBackstory;
 
-generateCharacter();
+  // Show the result card
+  resultBox.classList.add('show');
+}
+
+// ======================
+// EVENT LISTENERS
+// ======================
+document.getElementById('generateBtn').addEventListener('click', generateCharacter);
+
+document.getElementById('nameInput').addEventListener('keydown', (e) => {
+  if (e.key === 'Enter') {
+    generateCharacter();
+  }
+});

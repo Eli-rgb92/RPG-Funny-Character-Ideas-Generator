@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RPG Funny Character Generator</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Crimson+Pro:wght@400;600&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Arcane Character Forge</h1>
+    <p class="subtitle">Summon a ridiculous adventurer</p>
+
+    <div class="input-group">
+      <label for="nameInput">Hero's Name (optional)</label>
+      <input type="text" id="nameInput" placeholder="Leave blank for 'You are...'" maxlength="30">
+    </div>
+
+    <button id="generateBtn">✦ Summon Character ✦</button>
+
+    <div class="result" id="result">
+      <div class="char-name" id="charName"></div>
+
+      <div class="line">
+        <span class="label">Race & Class</span>
+        <span id="raceClass"></span>
+      </div>
+
+      <div class="line">
+        <span class="label">Special Trait</span>
+        <span id="trait"></span>
+      </div>
+
+      <div class="line">
+        <span class="label">Backstory Hook</span>
+        <span id="backstory"></span>
+      </div>
+    </div>
+
+    <p class="footer">May the dice be ever in your favor (or not)</p>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
