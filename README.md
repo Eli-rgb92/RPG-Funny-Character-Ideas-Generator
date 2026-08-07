@@ -34,4 +34,3 @@ A fun little RPG character generator that creates ridiculous fantasy adventurers
 
 ---
 
-Made for learning JavaScript + basic web development.
